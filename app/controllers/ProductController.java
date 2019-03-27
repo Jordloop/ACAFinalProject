@@ -123,5 +123,50 @@ public class ProductController extends Controller
         return ok(views.html.product_edit.render(product));
     }
 
+    @Transactional
+    public Result postProductEdit(int productId)
+    {
+        TypedQuery<Product> query = db.em()
+                .createQuery("SELECT p FROM Product p WHERE productId = :productId", Product.class);
+        query.setParameter("productId", productId);
+        Product product = query.getSingleResult();
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+
+        final String NAME = form.get("name");
+        final BigDecimal ITEM_COST = new BigDecimal(form.get("itemCost"));
+        final int UNITS_IN_STOCK = Integer.parseInt(form.get("unitsInStock"));
+        final int USER_ID = Integer.parseInt(form.get("userId"));
+        final String DESCRIPTION = form.get("description");
+        final int CATEGORY_ID = Integer.parseInt(form.get("categoryId"));
+
+        Http.MultipartFormData<File> formData = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart<File> filePart = formData.getFile("picture");
+        File file = filePart.getFile();
+        byte[] picture;
+        try
+        {
+            picture = Files.toByteArray(file);
+            if (picture != null && picture.length > 0)
+            {
+                product.setPicture(picture);
+            }
+        } catch (Exception e)
+        {
+            picture = null;
+        }
+
+        product.setProductName(NAME);
+        product.setItemCost(ITEM_COST);
+        product.setUnitsInStock(UNITS_IN_STOCK);
+        product.setUserId(USER_ID);
+        product.setDescription(DESCRIPTION);
+        product.setCategoryId(CATEGORY_ID);
+
+        return ok(views.html.product.render(product));
+    }
+
+
+
 
 }
