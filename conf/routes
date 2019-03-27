@@ -13,6 +13,7 @@ GET     /productpicture/:id            controllers.ProductController.getProductP
 GET     /productadd                     controllers.ProductController.getProductAdd
 POST     /productadd                     controllers.ProductController.postProductAdd
 
+GET     /productedit/:id                 controllers.ProductController.getProductEdit(id : Integer)
 
 GET     /login                          controllers.SessionController.getLogin
 POST    /login                          controllers.SessionController.postLogin
