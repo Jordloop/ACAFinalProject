@@ -1,4 +1,4 @@
-name := """final-project-starter"""
+name := """ACA_Final_Project"""
 
 version := "1.0-SNAPSHOT"
 

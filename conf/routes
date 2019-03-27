@@ -3,14 +3,19 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.TestController.getTest
-POST    /                           controllers.TestController.postTest
+GET     /                           controllers.HomeController.getHomePage
 
-GET     /test                       controllers.TestController.getTest
-POST    /test                       controllers.TestController.postTest
+GET     /products                  controllers.ProductController.getProducts
 
-GET     /testdb                       controllers.TestController.getTestDb
-POST    /testdb                       controllers.TestController.postTestDb
+GET     /product/:id                 controllers.ProductController.getProduct(id : Integer)
+GET     /productpicture/:id            controllers.ProductController.getProductPicture(id : Integer)
+
+GET     /productadd                     controllers.ProductController.getProductAdd
+POST     /productadd                     controllers.ProductController.postProductAdd
+
+
+GET     /login                          controllers.SessionController.getLogin
+POST    /login                          controllers.SessionController.postLogin
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

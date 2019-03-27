@@ -1,0 +1,26 @@
+@(products : List[Product])
+@doctype.render
+<html lang="en">
+    <head>
+        @global_header.render
+        <title>Employees</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Employees</h1>
+            @for(product <- products) {
+
+                <p>ProductId: @product.getProductId</p>
+                <p>Name: @product.getProductName</p>
+                <p>Cost: $@product.getItemCost</p>
+                <p>UnitsInStock: @product.getUnitsInStock</p>
+                <p>UserId: @product.getUserId</p>
+                <p>Description: @product.getDescription</p>
+                <a href="/product/@product.getProductId">Details</a>
+
+
+            <hr>
+            }
+        </div>
+    </body>
+</html>

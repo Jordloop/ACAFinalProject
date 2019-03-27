@@ -1,0 +1,54 @@
+@doctype.render
+<html lang="en">
+    <head>
+        @global_header.render
+        <title>Add Product</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Add Product</h1>
+
+            <form method="post" enctype="multipart/form-data">
+                @helper.CSRF.formField
+
+                <div class="form-group">
+                    <input type="text" name="name" id="name">
+                    <label for="name">Product Name</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="itemCost" id="itemCost">
+                    <label for="itemCost">Product Cost</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="unitsInStock" id="unitsInStock">
+                    <label for="unitsInStock">Units In Stock</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="userId" id="userId">
+                    <label for="userId">User Id</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="description" id="description">
+                    <label for="description">Description</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="categoryId" id="categoryId">
+                    <label for="categoryId">Category Id</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="file" name="picture" id="picture">
+                    <label for="picture">Picture</label>
+                </div>
+
+                <input type="submit" value="Add Product">
+
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+@(product : Product)
+@doctype.render
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div class="container">
+            <p>ProductId: @product.getProductId</p>
+            <p>Name: @product.getProductName</p>
+            <p>Cost: $@product.getItemCost</p>
+            <p>UnitsInStock: @product.getUnitsInStock</p>
+            <p>UserId: @product.getUserId</p>
+            <p>Description: @product.getDescription</p>
+            <img src="/productpicture/@product.getProductId" alt="Some bonkers image">
+
+        </div>
+    </body>
+</html>

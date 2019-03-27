@@ -1,0 +1,1 @@
+DELETE FROM aca_final_project;
