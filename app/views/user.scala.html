@@ -1,0 +1,32 @@
+@(user : UserAccount, products : List[Product])
+@doctype.render
+<html lang="en">
+    <head>
+        @global_header.render
+        <title>User</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>@user.getFullName</h1>
+            <p>@user.getCityState</p>
+            <p>@user.getBio</p>
+            <p>@user.getEmail</p>
+
+            <hr>
+            <h3>Products</h3>
+
+            @for(product <- products){
+            <p>ProductId: @product.getProductId</p>
+            <p>Name: @product.getProductName</p>
+            <p>Cost: $@product.getItemCost</p>
+            <p>UnitsInStock: @product.getUnitsInStock</p>
+            <p>UserId: @product.getUserId</p>
+            <p>Description: @product.getDescription</p>
+            <img src="/productpicture/@product.getProductId" width="250px" alt="Some bonkers image">
+
+            <hr>
+            }
+
+        </div>
+    </body>
+</html>

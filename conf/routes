@@ -16,6 +16,12 @@ POST     /productadd                     controllers.ProductController.postProdu
 GET     /productedit/:id                 controllers.ProductController.getProductEdit(id : Integer)
 POST     /productedit/:id                 controllers.ProductController.postProductEdit(id : Integer)
 
+POST    /productreview/:id              controllers.ProductController.postAddProductReview(id : Integer)
+
+
+GET     /user/:id                       controllers.UserAccountController.getUserAccount(id : Integer)
+
+
 GET     /login                          controllers.SessionController.getLogin
 POST    /login                          controllers.SessionController.postLogin
 

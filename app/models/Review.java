@@ -52,4 +52,34 @@ public class Review
     {
         return title;
     }
+
+    public void setContent(String content)
+    {
+        this.content = content;
+    }
+
+    public void setReviewDate(LocalDate reviewDate)
+    {
+        this.reviewDate = reviewDate;
+    }
+
+    public void setProductId(int productId)
+    {
+        this.productId = productId;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
+    }
+
+    public void setStars(int stars)
+    {
+        this.stars = stars;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
 }

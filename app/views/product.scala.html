@@ -1,20 +1,61 @@
-@(product : Product)
+@(product : Product, reviews : List[Review], userAccount : UserAccount)
 @doctype.render
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+        @global_header.render
+        <title>Product</title>
     </head>
     <body>
         <div class="container">
+
+            <a href="/productedit/@product.getProductId"><h3>Edit</h3></a>
+            <br>
+            <a href="/user/@userAccount.getUserAccountId">@userAccount.getFullName</a>
+            <hr>
+
             <p>ProductId: @product.getProductId</p>
             <p>Name: @product.getProductName</p>
             <p>Cost: $@product.getItemCost</p>
             <p>UnitsInStock: @product.getUnitsInStock</p>
             <p>UserId: @product.getUserId</p>
             <p>Description: @product.getDescription</p>
-            <img src="/productpicture/@product.getProductId" alt="Some bonkers image">
+            <img src="/productpicture/@product.getProductId" width="250px" alt="Some bonkers image">
 
+            <hr>
+
+            <h4>Write a review</h4>
+            <form method="post" action="/productreview/@product.getProductId">
+                @helper.CSRF.formField
+                <div class="form-group">
+                    <input type="text" name="title" id="title">
+                    <label for="title">Title</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="userId" id="userId">
+                    <label for="userId">User Id</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="stars" id="stars">
+                    <label for="stars">Stars</label>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" name="content" id="content"></textarea>
+                    <label for="content">Content</label>
+                </div>
+                <input type="hidden" name="productId" id="productId" value="@product.getProductId">
+                <input type="submit" value="Edit Product">
+            </form>
+
+            <hr>
+
+            @for(review <- reviews){
+            <p>Review Id: @review.getReviewId</p>
+            <p>Review Title: @review.getTitle</p>
+            <p>Review Date: @review.getReviewDate</p>
+            <p>Review Stars: @review.getStars</p>
+            <p>Review Content: @review.getContent</p>
+            <hr>
+            }
         </div>
     </body>
 </html>
